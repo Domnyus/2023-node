@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <h1>Domnyus Node.JS</h1>
+    <p>Index</p>
+
+
+    <div>
+        <h2>Blogs</h2>
+        <div>
+            <div>
+                <% if(blogs.length > 0) {%>
+                    <% blogs.forEach(blog =>{%>
+                        <div>
+                            <h3><%= blog.title %></h3>
+                            <p><%= blog.content %></p>
+                        </div>
+                        <% })%>
+                <% } else { %>
+                    <div>
+                        <h3>No blogs</h3>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <%- include("./partials/footer.ejs") %>
+</body>
+
+</html>

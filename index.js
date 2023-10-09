@@ -1,11 +1,17 @@
-var http = require("http")
-var fs = require("fs")
+const http = require("http")
+const fs = require("fs")
+const _ = require("lodash")
 
 const hostname = "localhost"
 const port = 3000
 
 const server = http.createServer((request, response) => {
-    console.log(request, response)
+    //lodash
+    const num = _.random(0, 1000)
+    console.log(num)
+    const greet = _.once(() => {
+        console.log("hello")
+    })
 
     //header content type
     response.setHeader("Content-Type", "text/html")
