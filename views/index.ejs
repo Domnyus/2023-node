@@ -19,6 +19,7 @@
                         <div>
                             <h3><%= blog.title %></h3>
                             <p><%= blog.content %></p>
+                            <a class="delete" data-id="<%= blog.id %>">Delete</a>
                         </div>
                         <% })%>
                 <% } else { %>
@@ -30,6 +31,21 @@
         </div>
     </div>
     <%- include("./partials/footer.ejs") %>
+    <script>
+        const to_del = document.querySelector("a.delete")
+
+        to_del.addEventListener("click", (e) => {
+            const data = `/blog/${to_del.dataset.id}`
+
+            fetch(data, {
+                method: "DELETE"
+            }).then((res) => res.json()).then( (data) => { window.location.href = data.red }).catch(
+                (err) => {
+                    console.log(err)
+                }
+            )
+        })
+    </script>
 </body>
 
 </html>
